@@ -14,4 +14,6 @@
  *= require_self
  *= require owl.carousel
  *= require owl.theme
+ *= require dataTables/extras/dataTables.responsive
+ *= require dataTables/jquery.dataTables
  */

@@ -22,6 +22,7 @@ gem "mini_magick"
 gem "cancancan"
 gem "omniauth-twitter"
 gem "omniauth-facebook"
+gem "jquery-datatables-rails"
 
 group :development, :test do
   gem "sqlite3", "1.3.11"

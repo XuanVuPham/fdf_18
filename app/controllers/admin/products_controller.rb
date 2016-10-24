@@ -1,4 +1,10 @@
 class Admin::ProductsController < ApplicationController
+  layout "admin_template"
+  before_action :load_product, only: [:destroy, :edit, :update]
+
+  def index
+    @products = Product.all
+  end
 
   def new
     $product_suggest = Suggest.find_by id: params[:product_suggest]
@@ -8,6 +14,19 @@ class Admin::ProductsController < ApplicationController
       image: $product_suggest.image
     else
       @product = Product.new
+    end
+  end
+
+  def edit
+
+  end
+
+  def update
+    if @product.update_attributes product_params
+      flash[:success] = t "saved"
+      redirect_to admin_root_path
+    else
+      render :edit
     end
   end
 
@@ -24,9 +43,26 @@ class Admin::ProductsController < ApplicationController
     redirect_to admin_suggests_path
   end
 
+  def destroy
+    if @product.destroy
+      flash[:success] = t "delete_successfully"
+    else
+      flash[:danger] = t "delete_not_successfully"
+    end
+    redirect_to admin_root_path
+  end
+
   private
   def product_params
     params.require(:product).permit :name, :price,
       :quantity, :image, :description
+  end
+
+  def load_product
+    @product = Product.find_by id: params[:id]
+    unless @product
+      flash[:danger] = t "product_not_exist"
+      redirect_to admin_root_path
+    end
   end
 end

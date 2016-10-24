@@ -45,6 +45,7 @@ en:
   error_login: "Invalid email/password combination"
   title: "Foods And Drinks"
   home: "Home"
+  edit_product: "Edit product"
   currency: "₫"
   could_not_find_the_product: "Could not find the product"
   description: "Description"
@@ -53,6 +54,10 @@ en:
   error: "Error"
   price: "Price"
   reply: "Reply"
+  quantity: "quantity"
+  edit: "edit"
+  suggest_list: "Suggest list"
+  product_not_exist: "Product not exist"
   description: "Description"
   layouts:
     header:
