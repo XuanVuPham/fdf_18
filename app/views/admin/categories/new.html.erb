@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-12 box">
+    <div class="portlet green">
+      <div class="team-heading">
+        <h3><%= t "create_product" %></h3>
+        <hr>
+      </div>
+      <div class="portlet-body">
+        <div class="col-md-6 col-md-offset-3">
+          <%= form_for [:admin, @category] do |f| %>
+            <div class="form-group">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: "form-control"%>
+            </div>
+            <div class="text-center">
+              <%= f.submit t("create_product"), class: "btn btn-danger" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

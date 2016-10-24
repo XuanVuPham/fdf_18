@@ -7,6 +7,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def new
+    @categories = Category.all
     $product_suggest = Suggest.find_by id: params[:product_suggest]
     if $product_suggest
       @product = Product.new name: $product_suggest.name,
@@ -18,7 +19,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
-
+    @categories = Category.all
   end
 
   def update
@@ -40,7 +41,7 @@ class Admin::ProductsController < ApplicationController
     else
       flash[:danger] = t "save_not_successfully"
     end
-    redirect_to admin_suggests_path
+    redirect_to admin_products_path
   end
 
   def destroy
@@ -54,7 +55,7 @@ class Admin::ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit :name, :price,
+    params.require(:product).permit :name, :price, :category_id,
       :quantity, :image, :description
   end
 

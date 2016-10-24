@@ -2,7 +2,10 @@
   <div class="col-md-12">
     <div class="portlet box green">
       <div class="team-heading">
-        <h3><%= t "product_list" %></h3>
+        <h3>
+          <%= t "product_list" %>
+          <%= link_to t("add_new"), new_admin_product_path, class: "btn btn-primary" %>
+        </h3>
         <hr>
       </div>
       <div class="portlet-body">
@@ -18,6 +21,7 @@
               <th></th>
             </tr>
           </thead>
+          <tbody>
             <% @products.each do |product| %>
               <tr>
                 <th><%= product.name %></th>
@@ -41,7 +45,6 @@
                 </th>
               </tr>
             <% end %>
-          <tbody>
           </tbody>
         </table>
       </div>

@@ -16,7 +16,7 @@ class Admin::OrdersController < ApplicationController
           format.js
         end
       else
-        redirect_to admin_root_path
+        redirect_to admin_orders_path
       end
     else
       if @order.update_attribute(:status, "open")
@@ -27,7 +27,7 @@ class Admin::OrdersController < ApplicationController
           format.js
         end
       else
-        redirect_to admin_root_path
+        redirect_to admin_orders_path
       end
     end
 
@@ -42,7 +42,7 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find_by id: params[:id]
     # binding.pry
     unless @order
-      flash[:danger] = t "product_not_exist"
+      flash[:danger] = t "order_not_exist"
       redirect_to admin_orders_path
     end
   end

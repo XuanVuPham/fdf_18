@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :products
     resources :suggests
     resources :orders
+    resources :categories
   end
   root "static_pages#home"
   devise_for :users, controllers: {registrations: "registrations",
