@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     root "products#index"
     resources :products
     resources :suggests
+    resources :orders
   end
   root "static_pages#home"
   devise_for :users, controllers: {registrations: "registrations",

@@ -1,0 +1,18 @@
+<% @orders.each do |order| %>
+  <tr>
+    <th><%= order.total %></th>
+    <th><%= order.user.name %></th>
+    <th>
+      <%= link_to t("detail"), admin_order_path(order.id),
+        method: :delete, class: "btn btn-success btn-sm",
+        data: {confirm: t("admin.confirm_del")}  %>
+    </th>
+    <th>
+      <% if order.status == "close" %>
+        <%= link_to t("accepted"), admin_order_path(order.id), method: :put, class: "btn btn-success" %>
+      <% else %>
+        <%= link_to t("accept"), admin_order_path(order.id), method: :put, class: "btn btn-danger" %>
+      <% end %>
+    </th>
+  </tr>
+<% end %>
