@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet box green">
+      <div class="team-heading">
+        <h3><%= t "product_list" %></h3>
+        <hr>
+      </div>
+      <div class="portlet-body">
+        <table class="table table-striped table-hover table-responsive datatable"
+          id="data-list">
+          <thead>
+            <tr>
+              <th><%= t "name" %></th>
+              <th><%= t "image" %></th>
+              <th><%= t "price" %></th>
+              <th><%= t "quantity" %></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+            <% @products.each do |product| %>
+              <tr>
+                <th><%= product.name %></th>
+                <% if !product.image.nil? %>
+                  <th><%= image_tag product.image %></th>
+                <% else %>
+                  <th><%= t "no_image" %></th>
+                <% end %>
+                <th><%= product.price %><%= t "currency" %></th>
+                <th><%= product.quantity %></th>
+
+                <th>
+                  <%= link_to edit_admin_product_path(product.id), title: t("edit") do %>
+                    <span class="glyphicon glyphicon-pencil"></span>
+                  <% end %>
+                </th>
+                <th>
+                  <%= link_to t("delete"), admin_product_path(product.id),
+                    method: :delete, class: "btn btn-danger btn-sm",
+                    data: {confirm: t("admin.confirm_del")}  %>
+                </th>
+              </tr>
+            <% end %>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

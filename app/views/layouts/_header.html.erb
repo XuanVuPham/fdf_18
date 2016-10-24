@@ -22,7 +22,12 @@
         <li><%= link_to t(".signin"), new_user_session_path %></li>
         <% if user_signed_in? %>
           <li><%= link_to t(".signout"), destroy_user_session_path,
-            method: :delete %></li>
+            method: :delete %>
+          </li>
+          <% if current_user.admin? %>
+            <li><%= link_to t("admin"), admin_root_path,
+              method: :delete %>
+          <% end %>
         <% end %>
       <% end %>
     </ul>
